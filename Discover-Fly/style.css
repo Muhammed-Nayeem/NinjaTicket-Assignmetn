@@ -131,3 +131,53 @@ nav ul li a:hover, a.active{
     display: flex;
     justify-content: space-between;
 }
+
+/*Invoice Part*/
+#TicketBooking-Invoice {
+    display: none;
+}
+.Invoice {
+    padding: 40px 20px;
+}
+.Invoice h3
+{
+    text-transform: uppercase;
+    padding-bottom: 4px;
+    border-bottom: 1px dashed #e6e4e4;
+    color: #4e60b8;
+    text-align: center;
+}
+.InvoiceDetails {
+    margin: 50px 0;
+    background: #f7efef;
+    padding: 40px 20px;
+}
+.InvoiceDetails h4{
+    margin-bottom: 20px;
+    color: #525050;
+}
+.InvoiceDetails h4 span {
+    margin-left: 30px;
+}
+.Invoice p
+{
+    color: green;
+    font-size: 25px;
+    line-height: 22px;
+    text-align: center;
+    font-weight: 700;
+}
+button.okBtn {
+    padding: 12px 40px;
+    background: #3838ec;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    margin: 20px auto 0 auto;
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    display: block;
+    cursor: pointer;
+    outline: none;
+}

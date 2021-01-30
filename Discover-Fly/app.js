@@ -1,27 +1,3 @@
-//First Class Increment Button Handler:
-const firstClassAddButton = document.getElementById("firstClass-ticketIncrement");
-firstClassAddButton.addEventListener("click", function () {
-  ticketClassHandler(true, "firstClass");
-});
-
-//First Class Decrement Button Handler:
-const firstClassDecreaseButton = document.getElementById("firstClass-ticketDecrement");
-firstClassDecreaseButton.addEventListener("click", function () {
-  ticketClassHandler(false, "firstClass");
-});
-
-//Economy Class Increment Button Handler:
-const economyAddButton = document.getElementById("economy-ticketIncrement");
-economyAddButton.addEventListener("click", function () {
-  ticketClassHandler(true, "economy");
-});
-
-//Economy Class Decrement Button Handler:
-const economyDecreaseButton = document.getElementById("economy-ticketDecrement");
-economyDecreaseButton.addEventListener("click", function () {
-  ticketClassHandler(false, "economy");
-});
-
 //Ticket Classification Handler:
 function ticketClassHandler(isTicketIncrease, ticketType) {
   const ticketInput = document.getElementById(ticketType + "-ticketInput");
@@ -47,21 +23,46 @@ function ticketClassHandler(isTicketIncrease, ticketType) {
 
 //Calculate Price:
 function calculatePrice() {
-  const firstClassPrice = getInputNumber("firstClass");
-  const economyClassPrice = getInputNumber("economy");
-  const subTotal = firstClassPrice * 150 + economyClassPrice * 100;
+  const firstClass = getInputNumber("firstClass");
+  const economyClass = getInputNumber("economy");
+
+  //Calculating Subtotal:
+  const subTotal = firstClass * 150 + economyClass * 100;
+
+  //Calculating Vat:
   const vat = Math.round(subTotal * 0.1);
+
+  //Calculating GrandTotal:
   const grandTotal = subTotal + vat;
+
   document.getElementById("subTotal").innerText = "$" + subTotal;
   document.getElementById("vat").innerText = "$" + vat;
   document.getElementById("grandTotal").innerText = "$" + grandTotal;
+
+  //Sending firstClass Tickets, EconomyTickets, Total Tickets and Total Amounts By Calling Function:
+  invoiceDetails(firstClass, economyClass, firstClass+economyClass, grandTotal);
 }
 
 //Get First Class and Economy Class Input Fields value:
 function getInputNumber(ticketClass) {
-  const ticketClassInput = document.getElementById(
-    ticketClass + "-ticketInput"
-  );
+  const ticketClassInput = document.getElementById(ticketClass + "-ticketInput");
   const newTicketClassInput = parseInt(ticketClassInput.value);
   return newTicketClassInput;
+}
+
+//Book Now Button Event Handler:
+document.getElementById("bookNowButton").addEventListener("click", function() {
+  const ticketBookingForm = document.getElementById("Ticket-BookingForm");
+  ticketBookingForm.style.display = "none";
+  const invoiceShow = document.getElementById("TicketBooking-Invoice");
+  invoiceShow.style.display = "block";
+});
+
+
+//Invoice Function:
+function invoiceDetails(firstClassTickets, economyTickets, totalTickets, totalAmounts) {
+  document.getElementById("firstClassTickets").innerText = firstClassTickets;
+  document.getElementById("economyClassTickets").innerText =  economyTickets;
+  document.getElementById("totalTickets").innerText = totalTickets;
+  document.getElementById("totalAmounts").innerText = "$"+ totalAmounts;
 }
