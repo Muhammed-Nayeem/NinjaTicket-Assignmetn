@@ -66,3 +66,10 @@ function invoiceDetails(firstClassTickets, economyTickets, totalTickets, totalAm
   document.getElementById("totalTickets").innerText = totalTickets;
   document.getElementById("totalAmounts").innerText = "$"+ totalAmounts;
 }
+
+//Reload the whole function when click this okay Button:
+function reloadButton(button) {
+  if (button === "confirmationButton") {
+    location.reload();
+  }
+}
